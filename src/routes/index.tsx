@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { QUESTION_POOL, getRank, type QuizQuestion } from "@/lib/quiz-data";
 import { cardPath, tweetUrl } from "@/lib/share";
+import { playEnter, playSelect, playDescend, playFanfare } from "@/lib/sfx";
 import bannerAsset from "@/assets/featured-game-banner.gif.asset.json";
 
 const bannerUrl = bannerAsset.url;
@@ -57,6 +58,7 @@ function Index() {
   const rank = getRank(score, TOTAL_QUESTIONS);
 
   const startQuiz = () => {
+    playEnter();
     setQuestions(drawQuestions());
     setAnswers([]);
     setCurrent(0);
@@ -64,6 +66,7 @@ function Index() {
   };
 
   const choose = (optionIndex: number) => {
+    playSelect();
     setAnswers((prev) => {
       const next = [...prev];
       next[current] = optionIndex;
@@ -74,8 +77,10 @@ function Index() {
   const descend = () => {
     if (answers[current] === undefined) return;
     if (current + 1 >= TOTAL_QUESTIONS) {
+      playFanfare();
       setPhase("done");
     } else {
+      playDescend();
       setCurrent((c) => c + 1);
     }
   };
@@ -248,6 +253,7 @@ function Index() {
                 href={tweetHref}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => playFanfare()}
                 className="rounded-2xl border-2 border-black bg-cyan px-10 py-5 font-display text-xl text-dungeon shadow-[0_8px_0_#000] transition-transform duration-150 hover:-translate-y-0.5 active:translate-y-0 active:shadow-[0_3px_0_#000]"
               >
                 Post on X 𝕏
