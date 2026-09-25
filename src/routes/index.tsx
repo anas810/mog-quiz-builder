@@ -253,6 +253,7 @@ function Index() {
                 href={tweetHref}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => playFanfare()}
                 className="rounded-2xl border-2 border-black bg-cyan px-10 py-5 font-display text-xl text-dungeon shadow-[0_8px_0_#000] transition-transform duration-150 hover:-translate-y-0.5 active:translate-y-0 active:shadow-[0_3px_0_#000]"
               >
                 Post on X 𝕏
