@@ -95,7 +95,7 @@ function Index() {
       style={
         phase === "start"
           ? {
-              backgroundImage: `url(${bannerUrl})`,
+              backgroundImage: `linear-gradient(rgba(10, 14, 26, 0.55), rgba(10, 14, 26, 0.55)), url(${bannerUrl})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
