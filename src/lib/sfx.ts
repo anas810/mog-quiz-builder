@@ -59,13 +59,14 @@ export function playSelect() {
   tone(ac, { freq: 660, endFreq: 880, duration: 0.07, type: "square", gain: 0.07 });
 }
 
-/** Hollow staircase thuds — descending a floor. */
+/** Falling "womp-womp-womp" — descending a floor. */
 export function playDescend() {
   const ac = getCtx();
   if (!ac) return;
-  [0, 0.11, 0.22].forEach((start, i) => {
-    tone(ac, { freq: 180 - i * 35, endFreq: 90 - i * 20, start, duration: 0.09, type: "triangle", gain: 0.14 });
+  [660, 494, 370].forEach((freq, i) => {
+    tone(ac, { freq, endFreq: freq * 0.7, start: i * 0.12, duration: 0.14, type: "square", gain: 0.12 });
   });
+  tone(ac, { freq: 220, endFreq: 110, start: 0.38, duration: 0.3, type: "sawtooth", gain: 0.1 });
 }
 
 /** Victory flourish — claiming loot / sharing. */
