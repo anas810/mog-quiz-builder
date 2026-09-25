@@ -59,12 +59,13 @@ export function playSelect() {
   tone(ac, { freq: 660, endFreq: 880, duration: 0.07, type: "square", gain: 0.07 });
 }
 
-/** Downward warp swoosh — descending a floor. */
+/** Hollow staircase thuds — descending a floor. */
 export function playDescend() {
   const ac = getCtx();
   if (!ac) return;
-  tone(ac, { freq: 520, endFreq: 150, duration: 0.26, type: "sawtooth", gain: 0.09 });
-  tone(ac, { freq: 260, endFreq: 80, start: 0.04, duration: 0.3, type: "square", gain: 0.07 });
+  [0, 0.11, 0.22].forEach((start, i) => {
+    tone(ac, { freq: 180 - i * 35, endFreq: 90 - i * 20, start, duration: 0.09, type: "triangle", gain: 0.14 });
+  });
 }
 
 /** Victory flourish — claiming loot / sharing. */
