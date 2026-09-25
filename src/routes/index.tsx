@@ -58,6 +58,7 @@ function Index() {
   const rank = getRank(score, TOTAL_QUESTIONS);
 
   const startQuiz = () => {
+    playEnter();
     setQuestions(drawQuestions());
     setAnswers([]);
     setCurrent(0);
@@ -65,6 +66,7 @@ function Index() {
   };
 
   const choose = (optionIndex: number) => {
+    playSelect();
     setAnswers((prev) => {
       const next = [...prev];
       next[current] = optionIndex;
@@ -75,8 +77,10 @@ function Index() {
   const descend = () => {
     if (answers[current] === undefined) return;
     if (current + 1 >= TOTAL_QUESTIONS) {
+      playFanfare();
       setPhase("done");
     } else {
+      playDescend();
       setCurrent((c) => c + 1);
     }
   };
