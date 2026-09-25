@@ -2,7 +2,9 @@ import { useMemo, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { QUESTION_POOL, getRank, type QuizQuestion } from "@/lib/quiz-data";
 import { cardPath, tweetUrl } from "@/lib/share";
-import bannerUrl from "@/assets/featured-game-banner.gif";
+import bannerAsset from "@/assets/featured-game-banner.gif.asset.json";
+
+const bannerUrl = bannerAsset.url;
 import wordMazeUrl from "@/assets/word-maze.png";
 import wordGainsUrl from "@/assets/word-gains.png";
 import { BrandWordmark } from "@/components/brand-wordmark";
@@ -93,7 +95,7 @@ function Index() {
       style={
         phase === "start"
           ? {
-              backgroundImage: `url(${bannerUrl})`,
+              backgroundImage: `linear-gradient(rgba(10, 14, 26, 0.55), rgba(10, 14, 26, 0.55)), url(${bannerUrl})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
